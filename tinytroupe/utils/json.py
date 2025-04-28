@@ -110,7 +110,8 @@ class JsonSerializableRegistry:
                     # Handle collections, recursively deserialize if items are JsonSerializableRegistry objects
                     deserialized_collection = []
                     for item in value:
-                        if isinstance(item, dict) and serialization_type_field_name in item:
+                        # Check if item is a dict, has the type field, AND the type field value is a registered class
+                        if isinstance(item, dict) and serialization_type_field_name in item and item[serialization_type_field_name] in JsonSerializableRegistry.class_mapping:
                             deserialized_collection.append(JsonSerializableRegistry.from_json(item, serialization_type_field_name=serialization_type_field_name))
                         else:
                             deserialized_collection.append(copy.deepcopy(item))
