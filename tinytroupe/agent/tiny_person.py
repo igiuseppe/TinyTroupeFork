@@ -1228,7 +1228,7 @@ class TinyPerson(JsonSerializableRegistry):
         if not include_mental_faculties:
             suppress_attributes.append("_mental_faculties")
 
-        self.to_json(suppress=suppress_attributes, file_path=path,
+        return self.to_json(suppress=suppress_attributes, file_path=path,
                      serialization_type_field_name="type")
 
     
