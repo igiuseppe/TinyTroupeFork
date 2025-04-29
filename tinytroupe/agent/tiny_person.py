@@ -849,7 +849,7 @@ class TinyPerson(JsonSerializableRegistry):
         return episodes
 
 
-    def retrieve_recent_memories(self, max_content_length:int=None, include_omission_info:bool=False) -> list:
+    def retrieve_recent_memories(self, max_content_length:int=None, include_omission_info:bool=True) -> list:
         episodes = self.episodic_memory.retrieve_recent(include_omission_info=include_omission_info)
 
         if max_content_length is not None:
