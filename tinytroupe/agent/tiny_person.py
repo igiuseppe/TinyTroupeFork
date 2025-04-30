@@ -4,7 +4,7 @@ import tinytroupe.openai_utils as openai_utils
 from tinytroupe.utils import JsonSerializableRegistry, repeat_on_error, name_or_empty
 import tinytroupe.utils as utils
 from tinytroupe.control import transactional, current_simulation
-
+from datetime import datetime
 
 import os
 import json
@@ -1206,7 +1206,7 @@ class TinyPerson(JsonSerializableRegistry):
         if self.environment is not None and self.environment.current_datetime is not None:
             return self.environment.current_datetime.isoformat()
         else:
-            return None
+            return datetime.now().isoformat()
 
     ###########################################################
     # IO
